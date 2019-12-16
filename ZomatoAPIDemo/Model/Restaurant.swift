@@ -20,9 +20,8 @@ struct RestaurantType: Decodable {
 struct RestaurantDetail : Decodable {
     let id: String
     let name: String
-//    let url: URL
-    let thumb: URL
-    let featured_image: URL
+    let thumb: String
+    let featured_image: String
     let user_rating: Rating
     let location: Location
     let is_delivering_now: Int
@@ -46,8 +45,7 @@ struct Location: Decodable {
 struct RestaurantViewModel {
     let id: String
     let name: String
-//    let url: URL
-    let thumb: URL
+    let thumb: URL?
     let featureImage: URL?
     let rating: String
     let location: Location
@@ -57,9 +55,8 @@ struct RestaurantViewModel {
     init(restaurant: RestaurantDetail) {
         self.id = restaurant.id
         self.name = restaurant.name
-//        self.url = restaurant.url
-        self.thumb = restaurant.thumb
-        self.featureImage = restaurant.featured_image
+        self.thumb = URL(string: restaurant.thumb)
+        self.featureImage = URL(string: restaurant.featured_image)
         self.rating = restaurant.user_rating.aggregate_rating
         self.location = restaurant.location
         self.isOpen = restaurant.is_delivering_now != 1
