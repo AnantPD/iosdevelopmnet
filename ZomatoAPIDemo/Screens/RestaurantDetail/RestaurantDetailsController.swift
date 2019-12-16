@@ -29,8 +29,8 @@ class RestaurantDetailsController: UIViewController {
         if let viewModel = viewModel {
             if let featureImgURL = viewModel.featureImage {
                 detailsView.featureImgView?.af_setImage(withURL: featureImgURL)
-            } else {
-                detailsView.featureImgView?.af_setImage(withURL: viewModel.thumb)
+            } else if let imageURL = viewModel.thumb {
+                detailsView.featureImgView?.af_setImage(withURL: imageURL)
             }
             detailsView.priceLabel?.text = viewModel.price
             detailsView.hoursLabel?.text = viewModel.isOpen ? "Open" : "Close"
