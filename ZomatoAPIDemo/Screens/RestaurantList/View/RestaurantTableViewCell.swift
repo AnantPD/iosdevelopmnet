@@ -24,7 +24,9 @@ class RestaurantTableViewCell: UITableViewCell {
     }
     
     func configureCell(withModel restaurant: RestaurantViewModel) {
-        restaurantImg.af_setImage(withURL: restaurant.thumb)
+        if let imageURL = restaurant.thumb {
+            restaurantImg.af_setImage(withURL: imageURL)
+        }
         nameLbl.text = restaurant.name
         distanceLbl.text = restaurant.rating
     }
